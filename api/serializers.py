@@ -11,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
             username=validated_data['username'],
             email=validated_data['email']
         )
-        user.set_password(validated_data['password'])  # Hash the password
+        user.set_password(validated_data['password'])
         user.save()
         return user
 
@@ -21,4 +21,4 @@ class UserSerializer(serializers.ModelSerializer):
             validated_data.pop('password')
         
         return super().update(instance, validated_data)
-    
+
