@@ -22,3 +22,27 @@ class UserSerializer(serializers.ModelSerializer):
         
         return super().update(instance, validated_data)
 
+class Postserailizer(serializers.ModelSerializer):  
+    class Meta:
+        model = usermodels.Post
+        fields = '__all__'
+          
+class Postlikesserailizer(serializers.ModelSerializer):  
+    class Meta:
+        model = usermodels.Postlikes
+        fields = '__all__'
+                
+class Postcommentserailizer(serializers.ModelSerializer):  
+    class Meta:
+        model = usermodels.Postcomment
+        fields = '__all__'   
+        
+class userfollowsserailizer(serializers.ModelSerializer):  
+    class Meta:
+        model = usermodels.Follows
+        fields = '__all__'                 
+        
+class storiesserailizer(serializers.ModelSerializer):  
+    class Meta:
+        model = usermodels.stories
+        fields = '__all__'      
