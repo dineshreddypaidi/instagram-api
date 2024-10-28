@@ -10,14 +10,19 @@ def generate_id():
             return generated_id
         
 class CustomUser(AbstractUser):
+    ACCOUNT_TYPE = [
+        ('private', 'private'),
+        ('public','public'),
+    ]
     bio = models.TextField(blank=True, null=True)
     profile_image_url = models.URLField(blank=True, null=True)
     website_url = models.URLField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    followers = models.PositiveIntegerField(blank=True,null=True)
-    following = models.PositiveBigIntegerField(blank=True,null=True)
-    posts = models.PositiveSmallIntegerField(blank=True,null=True)
+    followers = models.PositiveIntegerField(default=0)
+    followings = models.PositiveIntegerField(default=0)
+    posts = models.PositiveIntegerField(default=0)
+    account_type = models.CharField(max_length=10, choices=ACCOUNT_TYPE,default='public')
     
     def __str__(self):
         return self.username
@@ -31,7 +36,7 @@ class Post(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
     content_url = models.URLField()
     caption = models.TextField()
-    post_type = models.CharField(max_length=5, choices=POST_TYPES, default=None)
+    post_type = models.CharField(max_length=5, choices=POST_TYPES, default='img')
     created_at = models.DateTimeField(auto_now_add=True)
     likes = models.PositiveIntegerField(default=0)
     comments = models.PositiveIntegerField(default=0)
