@@ -2,7 +2,7 @@ from . import views
 from django.urls import path
 
 urlpatterns = [
-    path('',views.greet(),name="hello"),
+    path('',views.greet,name="hello"),
     path('user', views.logged_User.as_view(), name='logged-in-user'),  #get
     
     path('user/register',views.Registerview.as_view(),name="register"), #post
