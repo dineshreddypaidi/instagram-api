@@ -11,7 +11,7 @@ Authorization: Token {user_key}
 ## Base URL
 
 ```
-http://your-api-url.com/
+https://instagram-api.up.railway.app
 ```
 
 ## Endpoints

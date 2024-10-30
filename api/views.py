@@ -8,7 +8,15 @@ from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny
 from django.shortcuts import get_object_or_404        
 from django.db import transaction
+from django.http import HttpResponse
 
+
+def greet(request):
+    return HttpResponse({
+        'greet': 'Hello welcome',
+        'url' : 'https://github.com/dineshreddypaidi/instagram-api',
+        'for' : 'documentation'
+        }, status=status.HTTP_400_BAD_REQUEST)
 class Loginview(APIView):
     permission_classes = [AllowAny] 
     
