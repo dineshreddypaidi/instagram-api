@@ -16,6 +16,7 @@ class CustomUser(AbstractUser):
     ]
     bio = models.TextField(blank=True, null=True)
     profile_image_url = models.URLField(blank=True, null=True)
+    name = models.CharField(max_length=100)
     website_url = models.URLField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
