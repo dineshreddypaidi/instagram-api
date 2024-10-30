@@ -8,15 +8,16 @@ from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny
 from django.shortcuts import get_object_or_404        
 from django.db import transaction
-from django.http import HttpResponse
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 
+@csrf_exempt
 def greet(request):
-    return HttpResponse({
-        'greet': 'Hello welcome',
+    return JsonResponse({
+        'greet': 'welcome..!',
         'url' : 'https://github.com/dineshreddypaidi/instagram-api',
-        'for' : 'documentation'
-        }, status=status.HTTP_400_BAD_REQUEST)
+        'for' : 'documentation'})
 class Loginview(APIView):
     permission_classes = [AllowAny] 
     
