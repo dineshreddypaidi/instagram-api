@@ -1,1 +1,1 @@
-web: instagram.wsgi
+web: gunicorn instagram.wsgi
