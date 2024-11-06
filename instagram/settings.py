@@ -11,7 +11,7 @@ SECRET_KEY = SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['*',"https://instagram-api.up.railway.app","localhost"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -23,6 +23,8 @@ INSTALLED_APPS = [
     #restframework
     'rest_framework',
     'rest_framework.authtoken',
+    
+    'corsheaders',
     #apps
     'users',
 ]
@@ -43,6 +45,8 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 }
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 APPEND_SLASH = False
  
 MIDDLEWARE = [
@@ -53,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'instagram.urls'
@@ -75,7 +80,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'instagram.wsgi.application'
 
-#db
+# db
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -113,5 +119,8 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
+
 STATIC_URL = 'static/'
+#STATIC_ROOT = BASE_DIR / "static/"
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
